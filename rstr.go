@@ -6,10 +6,10 @@ import (
 )
 
 var symSet []byte = []byte("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_")
+var rnd = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 func Genstr(l int) string {
 	resKey := []byte{}
-	rnd := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	for i := 0; i < l; i++ {
 		resKey = append(resKey, symSet[rnd.Int63n(int64(len(symSet)))])
